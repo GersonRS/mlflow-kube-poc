@@ -1,6 +1,13 @@
 # Copyright VMware, Inc.
 # SPDX-License-Identifier: APACHE-2.0
 
+client_id: ""
+client_secret: ""
+oauth_callback_url: ""
+authorize_url: ""
+token_url: ""
+userdata_url: ""
+
 ## @section Global parameters
 ## Global Docker image parameters
 ## Please, note that this will override the image parameters, including dependencies, configured to use the global value
@@ -111,9 +118,26 @@ hub:
       Service: {{ .Release.Service }}
     hub:
       config:
+        GenericOAuthenticator:
+          client_id: {{ .Values.client_id }}
+          client_secret: {{ .Values.client_secret }}
+          oauth_callback_url: {{ .Values.oauth_callback_url }}
+          authorize_url: {{ .Values.authorize_url }}
+          token_url: {{ .Values.token_url }}
+          userdata_url: {{ .Values.userdata_url }}
+          login_service: keycloak
+          username_claim: preferred_username
+          userdata_params:
+            state: state
+          # In order to use keycloak client's roles as authorization layer
+          claim_groups_key: roles
+          allowed_groups:
+            - user
+          admin_groups:
+            - admin
         JupyterHub:
           admin_access: true
-          authenticator_class: dummy
+          authenticator_class: generic-oauth
           DummyAuthenticator:
           {{- if .Values.hub.password }}
             password: {{ .Values.hub.password | quote }}

@@ -87,9 +87,3 @@ variable "oidc" {
 
   default = {}
 }
-variable "home_ssh" {
-  description = "home ssh"
-  type        = string
-  default     = "/home/gerson/.ssh/id_ed25519" # change here
-}
-

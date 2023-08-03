@@ -1,54 +1,20 @@
-resource "random_password" "loki_secretkey" {
-  length  = 32
-  special = false
-}
-resource "random_password" "thanos_secretkey" {
-  length  = 32
-  special = false
-}
-resource "random_password" "gitlab_secretkey" {
+resource "random_password" "mlflow_secretkey" {
   length  = 32
   special = false
 }
 
 locals {
   minio_config = {
-    policies = [
+    policies = [      
       {
-        name = "loki-policy"
+        name = "mlflow-policy"
         statements = [
           {
-            resources = ["arn:aws:s3:::loki-bucket"]
+            resources = ["arn:aws:s3:::mlflow-bucket"]
             actions   = ["s3:CreateBucket", "s3:DeleteBucket", "s3:GetBucketLocation", "s3:ListBucket", "s3:ListBucketMultipartUploads"]
           },
           {
-            resources = ["arn:aws:s3:::loki-bucket/*"]
-            actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-          }
-        ]
-      },
-      {
-        name = "thanos-policy"
-        statements = [
-          {
-            resources = ["arn:aws:s3:::thanos-bucket"]
-            actions   = ["s3:CreateBucket", "s3:DeleteBucket", "s3:GetBucketLocation", "s3:ListBucket", "s3:ListBucketMultipartUploads"]
-          },
-          {
-            resources = ["arn:aws:s3:::thanos-bucket/*"]
-            actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
-          }
-        ]
-      },
-      {
-        name = "gitlab-policy"
-        statements = [
-          {
-            resources = ["arn:aws:s3:::gitlab-bucket"]
-            actions   = ["s3:CreateBucket", "s3:DeleteBucket", "s3:GetBucketLocation", "s3:ListBucket", "s3:ListBucketMultipartUploads"]
-          },
-          {
-            resources = ["arn:aws:s3:::gitlab-bucket/*"]
+            resources = ["arn:aws:s3:::mlflow-bucket/*"]
             actions   = ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"]
           }
         ]
@@ -56,30 +22,14 @@ locals {
     ],
     users = [
       {
-        accessKey = "loki-user"
-        secretKey = random_password.loki_secretkey.result
-        policy    = "loki-policy"
-      },
-      {
-        accessKey = "thanos-user"
-        secretKey = random_password.thanos_secretkey.result
-        policy    = "thanos-policy"
-      },
-      {
-        accessKey = "gitlab-user"
-        secretKey = random_password.gitlab_secretkey.result
-        policy    = "gitlab-policy"
+        accessKey = "mlflow-user"
+        secretKey = random_password.mlflow_secretkey.result
+        policy    = "mlflow-policy"
       }
     ],
     buckets = [
       {
-        name = "loki-bucket"
-      },
-      {
-        name = "thanos-bucket"
-      },
-      {
-        name = "registry"
+        name = "mlflow"
       }
     ]
   }

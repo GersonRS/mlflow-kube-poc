@@ -134,10 +134,14 @@ module "oidc" {
 
   dependency_ids = {
     keycloak = module.keycloak.id
+    traefik  = module.traefik.id
+    cert     = module.cert-manager.id
   }
 
   depends_on = [
     module.traefik,
+    module.cert-manager,
+    module.keycloak,
   ]
 }
 

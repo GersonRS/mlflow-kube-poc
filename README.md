@@ -8,13 +8,13 @@
 <!-- PROJECT SHIELDS -->
 
 [![npm](https://img.shields.io/badge/type-Open%20Project-green?&style=plastic)](https://img.shields.io/badge/type-Open%20Project-green)
-[![GitHub last commit](https://img.shields.io/github/last-commit/GersonRS/mlflow-poc?logo=github&style=plastic)](https://github.com/GersonRS/mlflow-poc/commits/master)
-[![GitHub Issues](https://img.shields.io/github/issues/gersonrs/mlflow-poc?logo=github&style=plastic)](https://github.com/GersonRS/mlflow-poc/issues)
-[![GitHub Language](https://img.shields.io/github/languages/top/gersonrs/mlflow-poc?&logo=github&style=plastic)](https://github.com/GersonRS/mlflow-poc/search?l=python)
-[![GitHub Repo-Size](https://img.shields.io/github/repo-size/GersonRS/mlflow-poc?logo=github&style=plastic)](https://img.shields.io/github/repo-size/GersonRS/mlflow-poc)
-[![GitHub Contributors](https://img.shields.io/github/contributors/GersonRS/mlflow-poc?logo=github&style=plastic)](https://img.shields.io/github/contributors/GersonRS/mlflow-poc)
-[![GitHub Stars](https://img.shields.io/github/stars/GersonRS/mlflow-poc?logo=github&style=plastic)](https://img.shields.io/github/stars/GersonRS/mlflow-poc)
-[![NPM](https://img.shields.io/github/license/GersonRS/mlflow-poc?&style=plastic)](LICENSE)
+[![GitHub last commit](https://img.shields.io/github/last-commit/GersonRS/mlflow-kube-poc?logo=github&style=plastic)](https://github.com/GersonRS/mlflow-kube-poc/commits/master)
+[![GitHub Issues](https://img.shields.io/github/issues/gersonrs/mlflow-kube-poc?logo=github&style=plastic)](https://github.com/GersonRS/mlflow-kube-poc/issues)
+[![GitHub Language](https://img.shields.io/github/languages/top/gersonrs/mlflow-kube-poc?&logo=github&style=plastic)](https://github.com/GersonRS/mlflow-kube-poc/search?l=python)
+[![GitHub Repo-Size](https://img.shields.io/github/repo-size/GersonRS/mlflow-kube-poc?logo=github&style=plastic)](https://img.shields.io/github/repo-size/GersonRS/mlflow-kube-poc)
+[![GitHub Contributors](https://img.shields.io/github/contributors/GersonRS/mlflow-kube-poc?logo=github&style=plastic)](https://img.shields.io/github/contributors/GersonRS/mlflow-kube-poc)
+[![GitHub Stars](https://img.shields.io/github/stars/GersonRS/mlflow-kube-poc?logo=github&style=plastic)](https://img.shields.io/github/stars/GersonRS/mlflow-kube-poc)
+[![NPM](https://img.shields.io/github/license/GersonRS/mlflow-kube-poc?&style=plastic)](LICENSE)
 [![Status](https://img.shields.io/badge/status-active-success.svg)](https://img.shields.io/badge/status-active-success.svg)
 
 
@@ -90,9 +90,9 @@ To use MLflow-Kube, you need to have the following prerequisites installed and c
 To get started with the MLflow POC, follow these steps:
 
 1. Clone this repository to your local computer.
-    - `git clone https://github.com/GersonRS/mlflow-poc.git`
+    - `git clone https://github.com/GersonRS/mlflow-kube-poc.git`
 2. Change directory to the repository:
-    - `cd mlflow-poc`
+    - `cd mlflow-kube-poc`
 >Make sure you have Terraform installed on your system, along with other necessary dependencies.
 3. Run `terraform init` to initialize Terraform configurations.
 * ```sh
@@ -113,7 +113,55 @@ Once the infrastructure is ready, you can utilize the installed applications, in
 
 
 ## Project Structure
-The project structure is as follows:
+This project follows a structured directory layout to organize its resources effectively:
+```sh
+    .
+    ├── LICENSE
+    ├── locals.tf
+    ├── main.tf
+    ├── modules
+    │   ├── argocd
+    │   ├── cert-manager
+    │   ├── jupyterhub
+    │   ├── keycloak
+    │   ├── kind
+    │   ├── kube-prometheus-stack
+    │   ├── metallb
+    │   ├── minio
+    │   ├── mlflow
+    │   ├── oidc
+    │   ├── postgresql
+    │   └── traefik
+    ├── outputs.tf
+    ├── README.md
+    ├── s3_buckets.tf
+    ├── struct.txt
+    ├── terraform.tf
+    └── variables.tf
+
+    15 directories, 83 files
+```
+
+* [**LICENSE**](LICENSE) - License file of the project.
+* [**locals.tf**](locals.tf) - Terraform locals file.
+* [**main.tf**](main.tf) - Main Terraform configuration file.
+* [**modules**](modules/) - Directory containing all the Terraform modules used in the project.
+  * [**argocd**](modules/argocd/) - Directory for configuring ArgoCD application.
+  * [**cert-manager**](modules/cert-manager/) - Directory for managing certificates using Cert Manager.
+  * [**jupyterhub**](modules/jupyterhub/) - Directory for setting up JupyterHub application.
+  * [**keycloak**](modules/keycloak/) - Directory for installing and configuring Keycloak.
+  * [**kind**](modules/kind/) - Directory for creating a Kubernetes cluster using Kind.
+  * [**metallb**](modules/metallb/) - Directory for setting up MetalLB, a load balancer for Kubernetes.
+  * [**minio**](modules/minio/) - Directory for deploying and configuring Minio for object storage.
+  * [**mlflow**](modules/mlflow/) - Directory for setting up MLflow, a machine learning lifecycle management platform.
+  * [**oidc**](modules/oidc/) - Directory for OpenID Connect (OIDC) configuration.
+  * [**postgresql**](modules/postgresql/) - Directory for deploying and configuring PostgreSQL database.
+  * [**traefik**](modules/traefik/) - Directory for setting up Traefik, an ingress controller for Kubernetes.
+* [**outputs.tf**](outputs.tf) - Terraform outputs file.
+* [**README.md**](README.md) - Project's README file, containing important information and guidelines.
+* [**s3_buckets.tf**](s3_buckets.tf) - Terraform configuration for creating S3 buckets.
+* [**terraform.tf**](terraform.tf) - Terraform configuration file for initializing the project.
+* [**variables.tf**](variables.tf) - Terraform variables file, containing input variables for the project.
 
 ## Contributions
 Contributions are welcome! Feel free to create a pull request with improvements, bug fixes, or new features. Contributions are what make the open source community an amazing place to learn, inspire, and create. Any contribution you make will be greatly appreciated.

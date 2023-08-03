@@ -20,3 +20,7 @@ output "database_credentials" {
   value       = module.postgresql.credentials
   sensitive   = true
 }
+
+# output "test" {
+#   value = nonsensitive(module.oidc.oidc.api_url)
+# }
