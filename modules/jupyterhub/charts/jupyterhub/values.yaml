@@ -126,9 +126,9 @@ hub:
           token_url: {{ .Values.token_url }}
           userdata_url: {{ .Values.userdata_url }}
           login_service: keycloak
-          username_claim: preferred_username
+          username_claim: username
           userdata_params:
-            state: state
+            state: profile
           # In order to use keycloak client's roles as authorization layer
           claim_groups_key: roles
           allowed_groups:
@@ -931,7 +931,6 @@ proxy:
     ## @param proxy.serviceAccount.annotations Additional custom annotations for the ServiceAccount
     ##
     annotations: {}
-
 
   ## @section Proxy Traffic Exposure Parameters
   ##
