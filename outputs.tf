@@ -20,10 +20,3 @@ output "database_credentials" {
   value       = module.postgresql.credentials
   sensitive   = true
 }
-
-# output "teste2" {
-#   value = module.postgresql.service
-# }
-# output "teste1" {
-#   value = module.airflow.teste1
-# }

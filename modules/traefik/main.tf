@@ -13,7 +13,7 @@ resource "argocd_project" "this" {
 
   spec {
     description  = "Traefik application project"
-    source_repos = ["https://github.com/GersonRS/modern-devops-stack.git"]
+    source_repos = ["https://github.com/GersonRS/mlflow-poc.git"]
 
     destination {
       name      = "in-cluster"
@@ -47,8 +47,8 @@ resource "argocd_application" "this" {
     project = argocd_project.this.metadata.0.name
 
     source {
-      repo_url        = "https://github.com/GersonRS/modern-devops-stack.git"
-      path            = "iac/modules/traefik/charts/traefik"
+      repo_url        = "https://github.com/GersonRS/mlflow-poc.git"
+      path            = "modules/traefik/charts/traefik"
       target_revision = var.target_revision
       helm {
         values = data.utils_deep_merge_yaml.values.output

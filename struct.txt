@@ -1,0 +1,25 @@
+    .
+    ├── LICENSE
+    ├── locals.tf
+    ├── main.tf
+    ├── modules
+    │   ├── argocd
+    │   ├── cert-manager
+    │   ├── jupyterhub
+    │   ├── keycloak
+    │   ├── kind
+    │   ├── kube-prometheus-stack
+    │   ├── metallb
+    │   ├── minio
+    │   ├── mlflow
+    │   ├── oidc
+    │   ├── postgresql
+    │   └── traefik
+    ├── outputs.tf
+    ├── README.md
+    ├── s3_buckets.tf
+    ├── struct.txt
+    ├── terraform.tf
+    └── variables.tf
+
+    15 directories, 83 files

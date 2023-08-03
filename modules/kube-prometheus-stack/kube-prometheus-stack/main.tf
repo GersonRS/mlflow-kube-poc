@@ -13,7 +13,7 @@ resource "argocd_project" "this" {
 
   spec {
     description  = "kube-prometheus-stack application project"
-    source_repos = ["https://github.com/GersonRS/modern-devops-stack.git"]
+    source_repos = ["https://github.com/GersonRS/mlflow-poc.git"]
 
     destination {
       name      = "in-cluster"
@@ -90,8 +90,8 @@ resource "argocd_application" "this" {
     project = argocd_project.this.metadata.0.name
 
     source {
-      repo_url        = "https://github.com/GersonRS/modern-devops-stack.git"
-      path            = "iac/modules/kube-prometheus-stack/charts/kube-prometheus-stack"
+      repo_url        = "https://github.com/GersonRS/mlflow-poc.git"
+      path            = "modules/kube-prometheus-stack/charts/kube-prometheus-stack"
       target_revision = var.target_revision
       plugin {
         name = "kustomized-helm"
