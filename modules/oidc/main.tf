@@ -49,7 +49,12 @@ resource "keycloak_openid_client_scope" "modern_devops_stack_mlflow_policy" {
   description            = "OpenID Connect scope to map mlflow access policy to a claim"
   include_in_token_scope = true
 }
-
+resource "keycloak_openid_client_scope" "modern_devops_stack_username" {
+  realm_id               = resource.keycloak_realm.modern_devops_stack.id
+  name                   = "username"
+  description            = "OpenID Connect built-in scope: username"
+  include_in_token_scope = true
+}
 
 resource "keycloak_openid_group_membership_protocol_mapper" "modern_devops_stack_groups" {
   realm_id        = resource.keycloak_realm.modern_devops_stack.id
@@ -70,6 +75,17 @@ resource "keycloak_openid_user_attribute_protocol_mapper" "modern_devops_stack_m
   add_to_id_token      = true
   claim_value_type     = "String"
 }
+resource "keycloak_openid_user_attribute_protocol_mapper" "modern_devops_stack_username" {
+  realm_id             = resource.keycloak_realm.modern_devops_stack.id
+  client_scope_id      = resource.keycloak_openid_client_scope.modern_devops_stack_username.id
+  name                 = "username"
+  user_attribute       = "username"
+  claim_name           = "username"
+  multivalued          = true
+  aggregate_attributes = true
+  add_to_id_token      = true
+  claim_value_type     = "String"
+}
 
 resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
   realm_id  = resource.keycloak_realm.modern_devops_stack.id
@@ -78,6 +94,7 @@ resource "keycloak_openid_client_default_scopes" "client_default_scopes" {
     "profile",
     "email",
     "roles",
+    "username",
     resource.keycloak_openid_client_scope.modern_devops_stack_groups.name,
     resource.keycloak_openid_client_scope.modern_devops_stack_mlflow_policy.name,
   ]

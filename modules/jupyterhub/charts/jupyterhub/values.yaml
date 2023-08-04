@@ -128,7 +128,6 @@ hub:
           login_service: keycloak
           username_claim: preferred_username
           tls_verify: false
-          scope: ['openid']
           userdata_params:
             state: state
           # In order to use keycloak client's roles as authorization layer
