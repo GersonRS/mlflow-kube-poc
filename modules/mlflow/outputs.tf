@@ -4,10 +4,11 @@ output "id" {
 }
 
 output "cluster_ip" {
+  description = "MLflow cluster ip internal"
   value = data.kubernetes_service.mlflow.spec[0].cluster_ip
 }
 
 output "endpoint" {
-  description = "MinIO endpoint where the buckets are available."
-  value       = "mlflow.${var.namespace}.svc.cluster.local:5000"
+  description = "MLflow endpoint external"
+  value = "https://mlflow.apps.${var.cluster_name}.${var.base_domain}"
 }

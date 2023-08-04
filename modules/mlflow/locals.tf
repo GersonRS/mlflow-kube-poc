@@ -2,7 +2,7 @@ locals {
   helm_values = [{
 
     extraEnvVars = {
-      MLFLOW_S3_ENDPOINT_URL = "http://${var.credentials_storage.endpoint}"
+      MLFLOW_S3_ENDPOINT_URL = "http://${var.storage.endpoint}"
       MLFLOW_S3_IGNORE_TLS   = true
       # MLFLOW_S3_UPLOAD_EXTRA_ARGS: '{"ServerSideEncryption": "aws:kms", "SSEKMSKeyId": "1234"}'
       # AWS_DEFAULT_REGION: my_region
@@ -13,8 +13,8 @@ locals {
         enabled = true
         bucket = "mlflow"
         path = "/"
-        awsAccessKeyId = "${var.credentials_storage.access_key}"
-        awsSecretAccessKey = "${var.credentials_storage.secret_access_key}"
+        awsAccessKeyId = "${var.storage.access_key}"
+        awsSecretAccessKey = "${var.storage.secret_access_key}"
       }
     }
     backendStore = {
@@ -22,11 +22,11 @@ locals {
       databaseMigration : true
       postgres = {
         enabled  = true
-        host     = "${var.credentials_database.service}"
+        host     = "${var.database.service}"
         port     = 5432
-        database = "${var.credentials_database.database}"
-        user     = "${var.credentials_database.user}"
-        password = "${var.credentials_database.password}"
+        database = "${var.database.database}"
+        user     = "${var.database.user}"
+        password = "${var.database.password}"
       }
     }
     ingress = {

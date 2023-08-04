@@ -207,14 +207,14 @@ module "mlflow" {
 
   oidc = module.oidc.oidc
 
-  credentials_storage = {
+  storage = {
     bucket_name       = "mlflow"
-    endpoint          = module.minio.endpoint
+    endpoint          = module.minio.cluster_dns
     access_key        = module.minio.minio_root_user_credentials.username
     secret_access_key = module.minio.minio_root_user_credentials.password
   }
 
-  credentials_database = {
+  database = {
     user     = module.postgresql.credentials.user
     password = module.postgresql.credentials.password
     database = module.postgresql.credentials.database
@@ -252,7 +252,7 @@ module "jupyterhub" {
 
   storage = {
     bucket_name       = "jupyterhub"
-    endpoint          = module.minio.endpoint
+    endpoint          = module.minio.cluster_dns
     access_key        = module.minio.minio_root_user_credentials.username
     secret_access_key = module.minio.minio_root_user_credentials.password
   }

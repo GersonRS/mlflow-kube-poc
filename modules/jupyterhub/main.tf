@@ -99,4 +99,12 @@ resource "null_resource" "this" {
   ]
 }
 
-
+data "kubernetes_service" "jupyterhub" {
+  metadata {
+    name      = "jupyterhub-hub"
+    namespace = var.namespace
+  }
+  depends_on = [
+    null_resource.this
+  ]
+}
