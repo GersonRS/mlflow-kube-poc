@@ -28,8 +28,8 @@ locals {
       }
     }
     hub = {
-      adminUser = "admin"
-      password  = "123456"
+      adminUser = "moderndevopsadmin"
+      password  = "Yug4pcsjhFD55iHN6YZLrVGypPKhmwuF"
     }
     proxy = {
       ingress = {
