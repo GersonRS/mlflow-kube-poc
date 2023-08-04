@@ -1,5 +1,3 @@
-
-
 resource "null_resource" "dependencies" {
   triggers = var.dependency_ids
 }
@@ -29,8 +27,9 @@ resource "random_password" "client_secret" {
 
 resource "keycloak_openid_client" "modern_devops_stack" {
   realm_id                     = resource.keycloak_realm.modern_devops_stack.id
-  name                         = "Modern DevOps Stack Applications OPENID"
+  name                         = "Modern DevOps Stack Applications"
   client_id                    = local.oidc.client_id
+  client_secret                = resource.random_password.client_secret.result
   access_type                  = "CONFIDENTIAL"
   standard_flow_enabled        = true
   direct_access_grants_enabled = true
