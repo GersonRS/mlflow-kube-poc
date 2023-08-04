@@ -134,8 +134,8 @@ hub:
           claim_groups_key: groups
           allowed_groups:
             - user
+            - modern-devops-stack-admins
           admin_groups:
-            - admin
             - modern-devops-stack-admins
         JupyterHub:
           admin_access: true

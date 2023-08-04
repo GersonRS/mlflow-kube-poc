@@ -27,10 +27,10 @@ locals {
         AWS_SECRET_ACCESS_KEY = "${var.storage.secret_access_key}"
       }
     }
-    hub = {
-      adminUser = "moderndevopsadmin"
-      password  = "Yug4pcsjhFD55iHN6YZLrVGypPKhmwuF"
-    }
+    # hub = {
+    #   adminUser = "moderndevopsadmin"
+    #   password  = "Yug4pcsjhFD55iHN6YZLrVGypPKhmwuF"
+    # }
     proxy = {
       ingress = {
         enabled = true

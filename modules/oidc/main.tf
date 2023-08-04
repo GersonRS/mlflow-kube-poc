@@ -81,8 +81,8 @@ resource "keycloak_openid_user_attribute_protocol_mapper" "modern_devops_stack_u
   name                 = "username"
   user_attribute       = "username"
   claim_name           = "username"
-  multivalued          = true
-  aggregate_attributes = true
+  multivalued          = false
+  aggregate_attributes = false
   add_to_id_token      = true
   claim_value_type     = "String"
 }
