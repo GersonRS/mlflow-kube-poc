@@ -1,8 +1,3 @@
----
-description: teste
-coverY: 0
----
-
 # 👋 Welcome to A Mlflow
 
 {% hint style="info" %}
