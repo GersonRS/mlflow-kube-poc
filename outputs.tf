@@ -16,9 +16,3 @@ output "minio_url" {
   value = module.minio.endpoint
   sensitive   = false
 }
-
-output "keycloak_admin_credentials" {
-  description = "Credentials for the administrator user of the Keycloak server."
-  value       = module.keycloak.admin_credentials
-  sensitive   = true
-}
