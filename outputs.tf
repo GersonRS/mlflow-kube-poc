@@ -1,4 +1,4 @@
-output "keycloak_users" {
+output "credentials" {
   description = "Map containing the credentials of each created user."
   value       = nonsensitive(module.oidc.devops_stack_users_passwords)
   sensitive   = true
@@ -6,10 +6,19 @@ output "keycloak_users" {
 
 output "jupyterhub_url" {
   value = module.jupyterhub.endpoint
-  sensitive   = true
+  sensitive   = false
 }
 output "mlflow_url" {
   value = module.mlflow.endpoint
-  sensitive   = true
+  sensitive   = false
+}
+output "minio_url" {
+  value = module.minio.endpoint
+  sensitive   = false
 }
 
+output "keycloak_admin_credentials" {
+  description = "Credentials for the administrator user of the Keycloak server."
+  value       = module.keycloak.admin_credentials
+  sensitive   = true
+}

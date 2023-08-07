@@ -105,11 +105,28 @@ To get started with the MLflow POC, follow these steps:
   ```
 >`Review the changes to be applied and confirm with yes when prompted. Terraform will now set up the Kubernetes cluster and deploy the required resources.`
 5. After the Terraform apply is complete, the output will display URLs for accessing the applications. Use the provided URLs to interact with the applications.
-6. The Terraform output will also provide the credentials necessary for accessing and managing the applications.
+6. The Terraform output will also provide the credentials necessary for accessing and managing the applications. Run `terraform output` to get the credentials.
+* ```
+  terraform output -json credentials
+  ```
 
 
 ## Usage
-Once the infrastructure is ready, you can utilize the installed applications, including MLflow, to track and manage your Machine Learning experiments. Access the applications through the provided URLs and log in using the credentials generated during setup.
+Once the infrastructure is successfully provisioned, you can utilize the installed applications, including MLflow, to track and manage your Machine Learning experiments. Access the applications through the provided URLs and log in using the credentials generated during setup. Follow these steps to utilize the Proof of Concept (PoC):
+
+1. Access the JupyterHub URL: After the infrastructure is provisioned using Terraform, you will receive the JupyterHub URL as an output. Open a web browser and navigate to this URL.
+
+2. Log in to JupyterHub: On the JupyterHub login page, click on "Sign in with Keycloak." Use the credentials provided in the output of the Terraform apply command, as mentioned in step 6 of the previous section.
+
+3. Access Jupyter Notebook: Upon successful login, you will have access to a Jupyter Notebook environment. Locate the "/opt/bitnami/jupyterhub-singleuser" directory within the Jupyter environment.
+
+4. Upload Files: Upload the files from the "code" folder of this repository into the "/opt/bitnami/jupyterhub-singleuser" directory.
+
+5. Execute "main.ipynb": Open the "main.ipynb" Jupyter Notebook file and execute it. This notebook contains the necessary code to initiate the Proof of Concept.
+
+6. Monitor Experiment in MLflow: Upon execution of the notebook, the MLflow experiment will be initiated. To monitor the experiment, access the MLflow URL provided in the output of the Terraform apply command. This URL will allow you to track and analyze the results of the PoC.
+
+Please note that these steps provide a high-level overview of the usage process. Ensure you have met all the requirements mentioned in the "Requirements" section before proceeding with the above steps. Additionally, refer to the provided documentation and comments within the code for any further instructions or configurations.
 
 
 ## Project Structure
@@ -162,6 +179,45 @@ This project follows a structured directory layout to organize its resources eff
 * [**s3_buckets.tf**](s3_buckets.tf) - Terraform configuration for creating S3 buckets.
 * [**terraform.tf**](terraform.tf) - Terraform configuration file for initializing the project.
 * [**variables.tf**](variables.tf) - Terraform variables file, containing input variables for the project.
+
+## Troubleshooting
+### Jupyterhub Login:
+
+If you encounter a login error, specifically an error 500, while attempting to access JupyterHub, follow these steps to resolve the issue:
+
+1. Access MinIO Storage: In case of a login error, navigate to the MinIO Storage using the provided MinIO URL available in the Terraform output.
+
+2. Single Sign-On (SSO) Login: Log in to MinIO using the Single Sign-On (SSO) credentials. This will establish a session that will allow you to successfully log in to other components.
+
+3. Return to JupyterHub: After successfully logging in to MinIO, return to the JupyterHub login page.
+
+4. Refresh the Page: Refresh the JupyterHub page. This will complete the login process, and you should now have access to the Jupyter Notebook environment.
+
+This troubleshooting procedure is specifically designed to address login errors that result in an error 500 when accessing JupyterHub. By logging in to MinIO using SSO and refreshing the JupyterHub page, you can resolve the issue and continue with the usage of the Proof of Concept.
+
+If you continue to experience login issues or encounter other technical difficulties, please refer to the provided documentation, check for any additional error messages, and ensure that you have followed all the prerequisites and setup instructions accurately.
+
+### Install libs Python
+
+Sometimes, during the installation of Python libraries in Jupyter Notebook, you may encounter an issue where the kernel does not recognize the appropriate environment. To resolve this problem, follow these steps:
+
+1. Select the Correct Kernel:
+
+When working with Jupyter Notebook, ensure that you are using the correct kernel corresponding to the specific Python environment you intend to use. To do this, follow these steps:
+
+  * a. Click on the "Kernel" option in the Jupyter Notebook toolbar.
+
+  * b. Choose the "Change Kernel" option.
+
+  * c. A dropdown menu will appear showing available kernels. Click on the option that corresponds to the name of the notebook you are working on, such as "main.ipynb" for the "main.ipynb" notebook.
+
+  * d. The notebook will now use the selected kernel, ensuring that the required Python libraries are properly recognized and utilized.
+
+By selecting the appropriate kernel, you can ensure that the Python libraries required for your specific notebook are correctly installed and utilized, mitigating any potential issues related to library compatibility or recognition.
+
+If you encounter any other issues or difficulties while using the Proof of Concept, refer to this "Troubleshooting" section for solutions to common problems. If the problem persists or if you experience unique challenges, consider consulting the provided documentation or seeking assistance from the community.
+
+
 
 ## Contributions
 Contributions are welcome! Feel free to create a pull request with improvements, bug fixes, or new features. Contributions are what make the open source community an amazing place to learn, inspire, and create. Any contribution you make will be greatly appreciated.
