@@ -157,7 +157,6 @@ This project follows a structured directory layout to organize its resources eff
     ├── outputs.tf
     ├── README.md
     ├── s3_buckets.tf
-    ├── struct.txt
     ├── terraform.tf
     └── variables.tf
 
