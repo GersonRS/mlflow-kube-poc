@@ -35,6 +35,9 @@ ML-Kube is a comprehensive Machine Learning infrastructure project built on top 
 - [Requirements](#requirements)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
+- [Troubleshooting](#troubleshooting)
+  - [Jupyterhub Login](#jupyterhub-login)
+  - [Install libs Python](#install-libs-python)
 - [Contributions](#sontributions)
 - [License](#license)
 - [Contact](#contact)
@@ -127,6 +130,8 @@ Once the infrastructure is successfully provisioned, you can utilize the install
 6. Monitor Experiment in MLflow: Upon execution of the notebook, the MLflow experiment will be initiated. To monitor the experiment, access the MLflow URL provided in the output of the Terraform apply command. This URL will allow you to track and analyze the results of the PoC.
 
 Please note that these steps provide a high-level overview of the usage process. Ensure you have met all the requirements mentioned in the "Requirements" section before proceeding with the above steps. Additionally, refer to the provided documentation and comments within the code for any further instructions or configurations.
+
+If you encounter any problems, refer to the [Troubleshooting](#troubleshooting) section for potential solutions to common issues that may arise during the setup and usage of the PoC.
 
 
 ## Project Structure
