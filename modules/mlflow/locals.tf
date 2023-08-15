@@ -12,7 +12,7 @@ locals {
       s3 = {
         enabled = true
         bucket = "mlflow"
-        path = "/"
+        path = ""
         awsAccessKeyId = "${var.storage.access_key}"
         awsSecretAccessKey = "${var.storage.secret_access_key}"
       }
