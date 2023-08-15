@@ -26,7 +26,7 @@ locals {
         AWS_ACCESS_KEY_ID = "${var.storage.access_key}"
         AWS_SECRET_ACCESS_KEY = "${var.storage.secret_access_key}"
       }
-      notebookDir: "/"
+      # notebookDir: "/"
     }
     # hub = {
     #   adminUser = "moderndevopsadmin"
