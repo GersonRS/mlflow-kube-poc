@@ -138,6 +138,13 @@ If you encounter any problems, refer to the [Troubleshooting](#troubleshooting) 
 This project follows a structured directory layout to organize its resources effectively:
 ```sh
     .
+    ├── code
+    │   ├── data
+    │   │   ├── teste2.csv
+    │   │   └── wine.data
+    │   ├── load.ipynb
+    │   └── main.ipynb
+    ├── kind-config
     ├── LICENSE
     ├── locals.tf
     ├── main.tf
@@ -160,9 +167,13 @@ This project follows a structured directory layout to organize its resources eff
     ├── terraform.tf
     └── variables.tf
 
-    15 directories, 83 files
+    68 directories, 240 files
 ```
 
+* [**code**](code/) - This directory contains Jupyter Notebook files and data files.
+  * [**data**](code/data/) - Data files such as "teste2.csv" and "wine.data" are stored here.
+  * [**load.ipynb**](code/load.ipynb) - A Jupyter Notebook for loading data.
+  * [**main.ipynb**](code/main.ipynb) - The main Jupyter Notebook for the project.
 * [**LICENSE**](LICENSE) - License file of the project.
 * [**locals.tf**](locals.tf) - Terraform locals file.
 * [**main.tf**](main.tf) - Main Terraform configuration file.
